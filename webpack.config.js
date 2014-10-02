@@ -20,6 +20,7 @@ module.exports = {
       {test: /\.es6\.js$/, loader: 'es6-loader'},
 
       // compile and include less files
+      {test: /\.css$/, loader: 'style-loader!css-loader'},
       {test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'},
 
       // allow less files to load urls pointing to font assets

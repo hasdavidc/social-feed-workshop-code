@@ -1,5 +1,8 @@
 var React = require('react');
 
+require('bootstrap/dist/css/bootstrap.css');
+require('styles/styles.less');
+
 var FeedStore = require('stores/FeedStore');
 var FeedActions = require('actions/FeedActions');
 
@@ -7,7 +10,7 @@ var FeedItem = require('components/FeedItem');
 
 var getState = function() {
   return {
-    stories  : FeedStore.stories
+    feedItems  : FeedStore.feedItems
   };
 };
 
@@ -38,10 +41,8 @@ var Application = React.createClass({
 
   render : function() {
     return (
-      <div>
-        {this.state.stories.map(story => {
-          return <FeedItem story={story} />;
-        })}
+      <div className="wrapper">
+        {this.state.feedItems.map(feedItem => <FeedItem feedItem={feedItem} />)}
       </div>
     );
   }

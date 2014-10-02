@@ -7,7 +7,7 @@ var config = require('config');
 
 var storeInstance;
 
-var stories = [];
+var feedItems = [];
 
 var query = cb => {
   return request
@@ -16,8 +16,8 @@ var query = cb => {
 };
 
 class FeedStore extends BaseStore {
-  get stories() {
-    return stories;
+  get feedItems() {
+    return feedItems;
   }
 }
 
@@ -25,7 +25,7 @@ var actions = {};
 
 actions[FeedConstants.FETCH] = action => {
   query((err, res) => {
-    stories = res.body;
+    feedItems = res.body;
     storeInstance.emitChange();
   })
 };
