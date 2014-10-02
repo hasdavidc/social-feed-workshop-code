@@ -1,13 +1,13 @@
 var React = require('react');
 
-var ExampleStore = require('stores/ExampleStore');
-var ExampleActions = require('actions/ExampleActions');
+var FeedStore = require('stores/FeedStore');
+var FeedActions = require('actions/FeedActions');
 
-var SubComponent = require('./SubComponent');
+var FeedItem = require('components/FeedItem');
 
 var getState = function() {
   return {
-    message  : ExampleStore.message
+    stories  : FeedStore.stories
   };
 };
 
@@ -20,11 +20,12 @@ var Application = React.createClass({
   },
 
   componentDidMount : function() {
-    ExampleStore.addChangeListener(this._onChange);
+    FeedStore.addChangeListener(this._onChange);
+    FeedActions.fetch();
   },
 
   componentWillUnmount : function() {
-    ExampleStore.removeChangeListener(this._onChange);
+    FeedStore.removeChangeListener(this._onChange);
   },
 
   _onChange : function() {
@@ -32,17 +33,15 @@ var Application = React.createClass({
   },
 
   _sendMessage : function() {
-    ExampleActions.sendMessage('hello world! ' + counter++);
+    FeedActions.sendMessage('hello world! ' + counter++);
   },
 
   render : function() {
     return (
       <div>
-        <h1>Hello World!</h1>
-        <h2>You can edit stuff in here and it will hot update</h2>
-        <button onClick={this._sendMessage}>Send Message</button>
-
-        <SubComponent message={this.state.message} />
+        {this.state.stories.map(story => {
+          return <FeedItem story={story} />;
+        })}
       </div>
     );
   }

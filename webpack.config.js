@@ -28,11 +28,15 @@ module.exports = {
     ]
   },
   resolve : {
-    extensions: ['', '.js', '.es6.js', '.jsx'],
+    extensions: ['', '.es6.js', '.js', '.jsx'],
     alias : {
       actions : __dirname + '/app/actions',
       constants : __dirname + '/app/constants',
-      stores : __dirname + '/app/stores'
+      components : __dirname + '/app/components',
+      stores : __dirname + '/app/stores',
+
+      styles : __dirname + '/styles',
+      config : __dirname + '/config.js'
     }
   }
 };

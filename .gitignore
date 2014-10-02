@@ -6,6 +6,7 @@
 
 # vim
 *.swp
+*.log
 
 # Dependency detritus
 node_modules
@@ -15,3 +16,6 @@ node_modules
 
 # Compiled webpack bundles
 bundle.js
+
+# configuration, api tokens
+config.js
