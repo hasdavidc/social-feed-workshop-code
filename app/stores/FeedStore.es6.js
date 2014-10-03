@@ -9,10 +9,21 @@ var storeInstance;
 
 var feedItems = [];
 
-var query = cb => {
+var query = () => {
   return request
     .get('https://api.mongolab.com/api/1/databases/react-workshop-social-feed/collections/posts?apiKey=' + config.apiKey)
-    .end(cb);
+    .end((err, res) => {
+      feedItems = res.body;
+      storeInstance.emitChange();
+    });
+};
+
+var upsertItem = feedItem => {
+  return request
+    .post('https://api.mongolab.com/api/1/databases/react-workshop-social-feed/collections/posts?apiKey=' + config.apiKey)
+    .send(feedItem)
+    .set('Accept', 'application/json')
+    .end(query);
 };
 
 class FeedStore extends BaseStore {
@@ -24,10 +35,11 @@ class FeedStore extends BaseStore {
 var actions = {};
 
 actions[FeedConstants.FETCH] = action => {
-  query((err, res) => {
-    feedItems = res.body;
-    storeInstance.emitChange();
-  })
+  query();
+};
+
+actions[FeedConstants.CREATE_NEW_FEED_ITEM] = action => {
+  upsertItem(action.feedItem);
 };
 
 storeInstance = new FeedStore(actions);

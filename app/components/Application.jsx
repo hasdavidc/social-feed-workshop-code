@@ -6,15 +6,14 @@ require('styles/styles.less');
 var FeedStore = require('stores/FeedStore');
 var FeedActions = require('actions/FeedActions');
 
-var FeedItem = require('components/FeedItem');
+var NewFeedItemEditor = require('components/NewFeedItemEditor');
+var FeedItemsList = require('components/FeedItemsList');
 
 var getState = function() {
   return {
     feedItems  : FeedStore.feedItems
   };
 };
-
-var counter = 0;
 
 var Application = React.createClass({
 
@@ -35,14 +34,11 @@ var Application = React.createClass({
     this.setState(getState());
   },
 
-  _sendMessage : function() {
-    FeedActions.sendMessage('hello world! ' + counter++);
-  },
-
   render : function() {
     return (
       <div className="wrapper">
-        {this.state.feedItems.map(feedItem => <FeedItem feedItem={feedItem} />)}
+        <NewFeedItemEditor />
+        <FeedItemsList feedItems={this.state.feedItems} />
       </div>
     );
   }

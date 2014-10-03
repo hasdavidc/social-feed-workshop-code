@@ -5,7 +5,14 @@ var FeedActions = {
 
   fetch : () => {
     AppDispatcher.handleViewAction({
-      actionType : FeedConstants.FETCH,
+      actionType : FeedConstants.FETCH
+    });
+  },
+
+  createNewFeedItem : feedItem => {
+    AppDispatcher.handleViewAction({
+      actionType : FeedConstants.CREATE_NEW_FEED_ITEM,
+      feedItem : feedItem
     });
   }
 
