@@ -9,9 +9,9 @@ var FeedActions = {
     });
   },
 
-  createNewFeedItem : feedItem => {
+  upsertFeedItem : feedItem => {
     AppDispatcher.handleViewAction({
-      actionType : FeedConstants.CREATE_NEW_FEED_ITEM,
+      actionType : FeedConstants.UPSERT_FEED_ITEM,
       feedItem : feedItem
     });
   }

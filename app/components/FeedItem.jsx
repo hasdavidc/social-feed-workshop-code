@@ -27,7 +27,7 @@ var FeedItem = React.createClass({
           {this.props.feedItem.content}
         </div>
 
-        <CommentsList comments={this.props.feedItem.comments} />
+        <CommentsList feedItem={this.props.feedItem} />
 
       </div>
     );

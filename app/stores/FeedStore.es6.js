@@ -38,7 +38,7 @@ actions[FeedConstants.FETCH] = action => {
   query();
 };
 
-actions[FeedConstants.CREATE_NEW_FEED_ITEM] = action => {
+actions[FeedConstants.UPSERT_FEED_ITEM] = action => {
   upsertItem(action.feedItem);
 };
 
