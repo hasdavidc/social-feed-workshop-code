@@ -37,6 +37,7 @@ module.exports = {
       stores : __dirname + '/app/stores',
 
       styles : __dirname + '/styles',
+      mixins : __dirname + '/app/mixins',
       config : __dirname + '/config.js'
     }
   }

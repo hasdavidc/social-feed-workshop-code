@@ -12,7 +12,7 @@ var FeedItem = React.createClass({
 
         <div className="media">
           <a className="pull-left" href="#">
-            <ProfilePicture class="medium media-object" subject={this.props.feedItem.name} />
+            <ProfilePicture class="medium media-object" user={this.props.feedItem.name} />
           </a>
 
           <div className="media-body">

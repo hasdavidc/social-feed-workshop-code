@@ -18,6 +18,10 @@ var query = () => {
     });
 };
 
+// also just initially populate data here, though you could trigger FeedActions.fetch
+// in Application's componentDidMount as well
+query();
+
 var upsertItem = feedItem => {
   return request
     .post('https://api.mongolab.com/api/1/databases/react-workshop-social-feed/collections/posts?apiKey=' + config.apiKey)

@@ -10,6 +10,10 @@ var CHANGE_EVENT = 'change';
 class BaseStore {
 
   constructor(actions) {
+    // https://github.com/BinaryMuse/fluxxor/issues/42
+    // max listeners defaults to 10, 0 = unlimited
+    this.setMaxListeners(0);
+
     if (!_.isObject(actions)) {
       return;
     }

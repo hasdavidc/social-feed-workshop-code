@@ -10,7 +10,7 @@ var Comment = React.createClass({
     return (
       <div className="media comment">
         <a className="pull-left" href="#">
-          <ProfilePicture class="small media-object" subject={this.props.comment.name} />
+          <ProfilePicture class="small media-object" user={this.props.comment.name} />
         </a>
 
         <div className="media-body">
