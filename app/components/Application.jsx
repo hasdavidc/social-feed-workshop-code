@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('lodash');
 
 require('bootstrap/dist/css/bootstrap.css');
 require('styles/styles.less');
@@ -7,18 +8,34 @@ var StoreListenerMixin = require('mixins/StoreListenerMixin');
 
 var FeedStore = require('stores/FeedStore');
 
-var NewFeedItemEditor = require('components/NewFeedItemEditor');
-var FeedItemsList = require('components/FeedItemsList');
-
 var Application = React.createClass({
 
   mixins : [StoreListenerMixin(FeedStore)],
 
   render : function() {
+
+    var feedItemsHtml = _.map(this.state.feedItems, item => {
+
+      return (
+        <div>
+          <strong>{item.name}</strong> said <strong>{item.content}</strong> on <strong>{item.date}</strong>
+          <div>Comments:</div>
+          {item.comments.map(comment => {
+            return (
+              <div>
+                <strong>{comment.name}</strong> said <strong>{comment.content}</strong> on <strong>{comment.date}</strong>
+              </div>
+            );
+          })}
+
+          <br/><br/><br/>
+        </div>
+      );
+    });
+
     return (
       <div className="wrapper">
-        <NewFeedItemEditor />
-        <FeedItemsList feedItems={this.state.feedItems} />
+        {feedItemsHtml}
       </div>
     );
   },

@@ -7,13 +7,6 @@ var FeedActions = {
     AppDispatcher.handleViewAction({
       actionType : FeedConstants.FETCH
     });
-  },
-
-  upsertFeedItem : feedItem => {
-    AppDispatcher.handleViewAction({
-      actionType : FeedConstants.UPSERT_FEED_ITEM,
-      feedItem : feedItem
-    });
   }
 
 };

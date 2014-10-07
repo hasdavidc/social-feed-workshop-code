@@ -42,10 +42,6 @@ actions[FeedConstants.FETCH] = action => {
   query();
 };
 
-actions[FeedConstants.UPSERT_FEED_ITEM] = action => {
-  upsertItem(action.feedItem);
-};
-
 storeInstance = new FeedStore(actions);
 
 module.exports = storeInstance;
